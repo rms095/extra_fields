@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Logout Page{% endblock %}
+{% block content %}
+  <div>
+    <p style='color:#092E20;font-size:25px;font-weight:bold;padding-top:20px;padding-left:15px;'>
+         You have been successfully logged out......
+    </p>
+    <p>Redirecting to login page.....</p> 
+  </div>      
+  <script type="text/javascript">
+        setTimeout(function() {
+            window.location.href = "/login/";
+        }, 2000);
+    </script>
+{% endblock %}
