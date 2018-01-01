@@ -1,10 +1,13 @@
 {% autoescape off %}
 Hi {{ user.username }},
+
 Warmly Welcome to our MySite.
+
 Please click on the link to confirm your registration,
 http://127.0.0.1:8000{% url 'activate' uidb64=uid token=token %}
 
 -
 Administrator,
+MySite , Pune
 
 {% endautoescape %}

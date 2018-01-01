@@ -1,4 +1,3 @@
-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
@@ -34,11 +33,13 @@ def signup(request):
             language_To_Learn=form.cleaned_data.get('language_To_Learn')
             gender=form.cleaned_data.get('gender')
             raw_password = form.cleaned_data.get('password1')
+
             user = authenticate(username=username, password=raw_password)
             
             current_site = get_current_site(request)
             print("current_site :: ")
             print(current_site)
+
             mail_subject = 'Activate your account.'
             message = render_to_string('act_active_email.html', {
                 'user': user,
@@ -55,7 +56,7 @@ def signup(request):
             return redirect('logout')
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'signup.html', {'form': form})   
 
 def activate(request, uidb64, token):
     try:
