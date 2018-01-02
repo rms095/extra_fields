@@ -19,7 +19,9 @@ Sign up page
 
 issue : 
 1. cant hold values
-2. cant verify wheather data is actually stored or not
+    - ? not clear; syntax `{{ signup_form.as_p }}` could be tried.
+2. cant verify weather data is actually stored or not
+    - Yes, values are getting saved in their respective tables.
 
 
 

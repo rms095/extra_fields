@@ -11,11 +11,19 @@ from mysite.core.tokens import account_activation_token
 from django.core.mail import EmailMessage
 
 from mysite.core.forms import SignUpForm
+from mysite.core.models import Profile, Languages
 
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+    context = {}
+    user_profile = Profile.objects.filter(user=request.user)
+    user_language = Languages.objects.filter(user=request.user)
+    if user_profile:
+        context['profile'] = user_profile.get()
+    if user_language:
+        context['language'] = user_language.get()
+    return render(request, 'home.html', context=context)
 
 
 def signup(request):
@@ -35,7 +43,16 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
 
             user = authenticate(username=username, password=raw_password)
-            
+            user_profile = Profile.objects.create(
+                user=user, bio='bio', mode='Mode', country=country,
+                city=home_city, gender=gender
+            )
+            user_profile.save()
+            user_language = Languages.objects.create(
+                user=user, language=language_To_Learn, language_type='Programming'
+            )
+            user_language.save()
+
             current_site = get_current_site(request)
             print("current_site :: ")
             print(current_site)

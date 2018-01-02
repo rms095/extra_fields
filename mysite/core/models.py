@@ -14,9 +14,8 @@ class Languages(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User)
-    city = models.CharField(max_length=50)
     bio = models.CharField(max_length=100)
     mode = models.CharField(max_length=6)
     country = models.CharField(max_length=15, default='India')
-    city = models.CharField(max_length=10, default='Pune')
+    city = models.CharField(max_length=50, default='Pune')
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default='Male')
