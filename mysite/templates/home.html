@@ -3,10 +3,10 @@
 {% block content %}
   <h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
   <p>Your email address: {{ user.email }}</p>
-  <p>{{ user.gender }}</p>
-  <p>{{ user.home_city }}</p>
-  <p>{{ user.country }}</p>
-  <p>{{ user.language_To_Learn }}</p>
-  <p>{{ user.password }}</p>
+  <p>{{ profile.gender }}</p>
+  <p>{{ profile.city }}</p>
+  <p>{{ profile.country }}</p>
+  <p>{{ language.language_To_Learn }}</p>
+  <p>Password Hash: <i>{{ user.password }}</i></p>
 
 {% endblock %}
